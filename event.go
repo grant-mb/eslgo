@@ -19,7 +19,7 @@ import (
 	"net/url"
 	"strconv"
 	"strings"
-	// "encoding/json"
+	"encoding/json"
 )
 
 type EventListener func(event *Event)
@@ -67,12 +67,16 @@ func readXMLEvent(body []byte) (*Event, error) {
 	}, nil
 }
 
+type EventJson struct {
+	EventName string
+}
+
 // TODO: Needs processing
 func readJSONEvent(body []byte) (*Event, error) {
-	// decoder := json.NewDecoder(body)
-	// var v interface{}
-	// decoder.Decode(v)
-	// fmt.Printf(v)
+	decoder := json.NewDecoder(body)
+	var j EventJson
+	decoder.Decode(&j)
+	fmt.Printf(&j)
 	return &Event{
 		Headers: make(textproto.MIMEHeader),
 	}, nil
