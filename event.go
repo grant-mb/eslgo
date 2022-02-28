@@ -19,7 +19,7 @@ import (
 	"net/url"
 	"strconv"
 	"strings"
-	"encoding/json"
+	// "encoding/json"
 )
 
 type EventListener func(event *Event)
