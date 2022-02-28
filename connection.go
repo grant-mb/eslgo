@@ -93,6 +93,7 @@ func newConnection(c net.Conn, outbound bool, opts Options) *Conn {
 
 // RegisterEventListener - Registers a new event listener for the specified channel UUID(or EventListenAll). Returns the registered listener ID used to remove it.
 func (c *Conn) RegisterEventListener(channelUUID string, listener EventListener) string {
+	c.logger.Info("calling from within the eslgo library a logging function")
 	c.eventListenerLock.Lock()
 	defer c.eventListenerLock.Unlock()
 
